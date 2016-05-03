@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/konashi_menu_update"
+        android:title="@string/konashi_updater_menu_update"
+        android:icon="@drawable/ic_konashi_updater_check_white"
+        app:showAsAction="ifRoom" />
+</menu>

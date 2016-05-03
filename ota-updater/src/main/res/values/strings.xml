@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">OTA updater</string>
+
+    <string name="konashi_updater_text_firmware">Firmware</string>
+    <string name="konashi_updater_text_target">Target</string>
+
+    <string name="konashi_updater_label_title">Title</string>
+    <string name="konashi_updater_label_author">Author</string>
+    <string name="konashi_updater_label_description">Description</string>
+
+    <string name="konashi_updater_label_name">Name</string>
+    <string name="konashi_updater_label_revision">Revision</string>
+
+    <string name="konashi_updater_btn_select_firmware">Select firmware</string>
+    <string name="konashi_updater_btn_connect">Connect</string>
+
+    <string name="konashi_updater_menu_update">Update</string>
 </resources>
