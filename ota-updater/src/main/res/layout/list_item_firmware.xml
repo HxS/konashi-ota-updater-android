@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/konashi_updater_list_item_firmware_padding">
+
+    <TextView style="@style/TextAppearance.AppCompat.Title.Inverse"
+        android:id="@+id/konashi_updater_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="konashi2.0.0-release-04-DeviceNameBugFix.bin" />
+
+    <TextView style="@style/TextAppearance.AppCompat.Subhead.Inverse"
+        android:id="@+id/konashi_updater_text_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="konashi@example.com" />
+</LinearLayout>

@@ -5,4 +5,6 @@
 
     <dimen name="konashi_updater_card_margin">8dp</dimen>
     <dimen name="konashi_updater_card_padding">16dp</dimen>
+
+    <dimen name="konashi_updater_list_item_firmware_padding">8dp</dimen>
 </resources>
