@@ -7,6 +7,10 @@ import jp.hxs.android.konashi.otaupdater.data.store.StoreModule;
 import jp.hxs.android.konashi.otaupdater.data.usecase.UseCaseModule;
 import jp.hxs.android.konashi.otaupdater.infrastructure.api.ApiModule;
 import jp.hxs.android.konashi.otaupdater.infrastructure.repository.RepositoryModule;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.connectdevice.ConnectDeviceComponent;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.connectdevice.ConnectDeviceModule;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.selectfirmware.SelectFirmwareComponent;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.selectfirmware.SelectFirmwareModule;
 import jp.hxs.android.konashi.otaupdater.presentation.fragment.otaupdater.UpdaterFragmentComponent;
 import jp.hxs.android.konashi.otaupdater.presentation.fragment.otaupdater.UpdaterFragmentModule;
 
@@ -25,5 +29,8 @@ import jp.hxs.android.konashi.otaupdater.presentation.fragment.otaupdater.Update
         }
 )
 public interface KonashiOtaUpdaterComponent {
-    UpdaterFragmentComponent    plus(UpdaterFragmentModule module);
+    UpdaterFragmentComponent plus(UpdaterFragmentModule module);
+
+    ConnectDeviceComponent  plus(ConnectDeviceModule module);
+    SelectFirmwareComponent plus(SelectFirmwareModule module);
 }
