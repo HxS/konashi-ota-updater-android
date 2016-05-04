@@ -22,5 +22,6 @@ public interface KonashiOtaUpdaterStore {
     Observable<Device> observeDevices();
 
     void update(ConnectedDevice device);
+    ConnectedDevice getConnectedDevice();
     Observable<ConnectedDevice> observeConnectedDevice();
 }

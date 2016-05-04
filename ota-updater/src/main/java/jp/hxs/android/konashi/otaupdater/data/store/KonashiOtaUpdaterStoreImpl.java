@@ -79,6 +79,11 @@ class KonashiOtaUpdaterStoreImpl implements KonashiOtaUpdaterStore {
     }
 
     @Override
+    public ConnectedDevice getConnectedDevice() {
+        return connectedDeviceSubject.first().toBlocking().first();
+    }
+
+    @Override
     public Observable<ConnectedDevice> observeConnectedDevice() {
         return connectedDeviceSubject;
     }
