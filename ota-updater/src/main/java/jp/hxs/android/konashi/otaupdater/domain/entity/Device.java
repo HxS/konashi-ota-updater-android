@@ -7,10 +7,10 @@ public class Device {
     public static final String TAG = Device.class.getSimpleName();
 
     public final String name;
-    public final String revision;
+    public final String address;
 
-    public Device(String name, String revision) {
+    public Device(String name, String address) {
         this.name = name;
-        this.revision = revision;
+        this.address = address;
     }
 }
