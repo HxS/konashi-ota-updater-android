@@ -5,6 +5,7 @@ import dagger.Provides;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.ConnectDeviceUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.GetFirmwaresUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.ScanDevicesUseCase;
+import jp.hxs.android.konashi.otaupdater.domain.usecase.UploadFirmwareToKonashiUseCase;
 
 /**
  * Created by izumin on 5/3/2016 AD.
@@ -25,6 +26,11 @@ public class UseCaseModule {
 
     @Provides
     ConnectDeviceUseCase connectDeviceUseCase(ConnectDeviceUseCaseImpl useCase) {
+        return useCase;
+    }
+
+    @Provides
+    UploadFirmwareToKonashiUseCase uploadFirmwareToKonashiUseCase(UploadFirmwareToKonashiUseCaseImpl useCase) {
         return useCase;
     }
 }
