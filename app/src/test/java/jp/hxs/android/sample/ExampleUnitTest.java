@@ -1,4 +1,4 @@
-package jp.hxs.android.konashiotaupdtaer;
+package jp.hxs.android.sample;
 
 import org.junit.Test;
 
