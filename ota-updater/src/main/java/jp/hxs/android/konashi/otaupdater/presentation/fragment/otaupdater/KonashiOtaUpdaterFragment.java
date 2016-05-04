@@ -19,15 +19,21 @@ import jp.hxs.android.konashi.otaupdater.DaggerKonashiOtaUpdaterComponent;
 import jp.hxs.android.konashi.otaupdater.KonashiOtaUpdaterComponent;
 import jp.hxs.android.konashi.otaupdater.KonashiOtaUpdaterModule;
 import jp.hxs.android.konashi.otaupdater.R;
+import jp.hxs.android.konashi.otaupdater.domain.entity.ConnectedDevice;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Device;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Firmware;
 import jp.hxs.android.konashi.otaupdater.infrastructure.api.ApiModule;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.connectdevice.ConnectDeviceDialog;
+import jp.hxs.android.konashi.otaupdater.presentation.dialog.selectfirmware.SelectFirmwareDialog;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KonashiOtaUpdaterFragment extends Fragment implements KonashiOtaUpdaterView {
+public class KonashiOtaUpdaterFragment extends Fragment implements
+        KonashiOtaUpdaterView,
+        SelectFirmwareDialog.Listener,
+        ConnectDeviceDialog.Listener {
     public static final String TAG = KonashiOtaUpdaterFragment.class.getSimpleName();
 
     public static KonashiOtaUpdaterFragment newInstance() {
@@ -102,6 +108,25 @@ public class KonashiOtaUpdaterFragment extends Fragment implements KonashiOtaUpd
     }
 
     // ================================================================
+    // SelectFirmwareDialog.Listener, ConnectDeviceDialog.Listener
+    // ================================================================
+
+    @Override
+    public KonashiOtaUpdaterComponent getKonashiOtaUpdaterComponent() {
+        return component;
+    }
+
+    @Override
+    public void onFirmwareSelected(Firmware firmware) {
+        handlers.onFirmwareSelected(firmware);
+    }
+
+    @Override
+    public void onDeviceSelected(Device device) {
+        handlers.onDeviceSelected(device);
+    }
+
+    // ================================================================
     // KonashiOtaUpdaterView
     // ================================================================
 
@@ -113,9 +138,28 @@ public class KonashiOtaUpdaterFragment extends Fragment implements KonashiOtaUpd
     }
 
     @Override
-    public void setKonashi(Device device) {
-        textName.setText(device.name);
-        textRevision.setText(device.revision);
+    public void setConnectedDevice(@Nullable ConnectedDevice device) {
+        if (device != null) {
+            textName.setText(device.name);
+            textRevision.setText(device.revision);
+        } else {
+            textName.setText("");
+            textRevision.setText("");
+        }
+    }
+
+    @Override
+    public void showSelectFirmwareDialog(int requestCode) {
+        final SelectFirmwareDialog dialog = SelectFirmwareDialog.newInstance();
+        dialog.setTargetFragment(this, requestCode);
+        dialog.show(getFragmentManager(), TAG);
+    }
+
+    @Override
+    public void showConnectDeviceDialog(int requestCode) {
+        final ConnectDeviceDialog dialog = ConnectDeviceDialog.newInstance();
+        dialog.setTargetFragment(this, requestCode);
+        dialog.show(getFragmentManager(), TAG);
     }
 
     // ================================================================

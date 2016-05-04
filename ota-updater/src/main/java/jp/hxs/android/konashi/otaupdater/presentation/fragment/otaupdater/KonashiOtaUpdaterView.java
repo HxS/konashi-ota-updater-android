@@ -1,12 +1,16 @@
 package jp.hxs.android.konashi.otaupdater.presentation.fragment.otaupdater;
 
+import android.support.annotation.Nullable;
+
+import jp.hxs.android.konashi.otaupdater.domain.entity.ConnectedDevice;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Firmware;
-import jp.hxs.android.konashi.otaupdater.domain.entity.Device;
 
 /**
  * Created by izumin on 5/4/2016 AD.
  */
 interface KonashiOtaUpdaterView {
     void setFirmware(Firmware firmware);
-    void setKonashi(Device device);
+    void setConnectedDevice(@Nullable ConnectedDevice device);
+    void showSelectFirmwareDialog(int requestCode);
+    void showConnectDeviceDialog(int requestCode);
 }

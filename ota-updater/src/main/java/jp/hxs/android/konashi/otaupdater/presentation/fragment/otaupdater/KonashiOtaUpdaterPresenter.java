@@ -1,7 +1,10 @@
 package jp.hxs.android.konashi.otaupdater.presentation.fragment.otaupdater;
 
+import android.support.annotation.Nullable;
+
 import javax.inject.Inject;
 
+import jp.hxs.android.konashi.otaupdater.domain.entity.ConnectedDevice;
 import jp.hxs.android.konashi.otaupdater.domain.store.KonashiOtaUpdaterStore;
 import jp.hxs.android.konashi.otaupdater.presentation.fragment.common.Presenter;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,5 +31,8 @@ class KonashiOtaUpdaterPresenter extends Presenter {
         addSubscription(store.observeFirmware()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(view::setFirmware));
+        addSubscription(store.observeConnectedDevice()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(view::setConnectedDevice));
     }
 }
