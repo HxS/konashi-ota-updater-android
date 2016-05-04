@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import jp.hxs.android.konashi.otaupdater.domain.repository.DevicesRepository;
 import jp.hxs.android.konashi.otaupdater.domain.repository.FirmwaresRepository;
 
 /**
@@ -16,6 +17,12 @@ public class RepositoryModule {
     @Provides
     @Singleton
     FirmwaresRepository firmwaresRepository(FirmwaresRepositoryImpl repo) {
+        return repo;
+    }
+
+    @Provides
+    @Singleton
+    DevicesRepository devicesRepository(DevicesRepositoryImpl repo) {
         return repo;
     }
 }
