@@ -26,4 +26,9 @@ class FirmwaresRepositoryImpl implements FirmwaresRepository {
     public Single<List<Firmware>> getAll() {
         return dataSourceFactory.createLocalDataSource().getAll();
     }
+
+    @Override
+    public Single<byte[]> getBinary(Firmware firmware) {
+        return dataSourceFactory.createLocalDataSource().getBinary(firmware);
+    }
 }

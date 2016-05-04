@@ -10,4 +10,5 @@ import rx.Single;
  */
 public interface FirmwaresDataSource {
     Single<List<Firmware>> getAll();
+    Single<byte[]> getBinary(Firmware firmware);
 }
