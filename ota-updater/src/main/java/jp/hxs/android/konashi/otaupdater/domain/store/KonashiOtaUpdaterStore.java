@@ -2,6 +2,7 @@ package jp.hxs.android.konashi.otaupdater.domain.store;
 
 import java.util.List;
 
+import jp.hxs.android.konashi.otaupdater.domain.entity.ConnectedDevice;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Device;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Firmware;
 import rx.Observable;
@@ -19,4 +20,7 @@ public interface KonashiOtaUpdaterStore {
 
     void addDevice(Device newDevice);
     Observable<Device> observeDevices();
+
+    void update(ConnectedDevice device);
+    Observable<ConnectedDevice> observeConnectedDevice();
 }
