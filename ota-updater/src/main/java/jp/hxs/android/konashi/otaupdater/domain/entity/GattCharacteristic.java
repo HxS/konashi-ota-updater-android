@@ -1,6 +1,11 @@
 package jp.hxs.android.konashi.otaupdater.domain.entity;
 
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattService;
+
 import java.util.UUID;
+
+import info.izumin.android.bletia.rx.RxBletia;
 
 /**
  * Created by izumin on 5/4/2016 AD.
@@ -25,5 +30,13 @@ public enum GattCharacteristic {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public BluetoothGattService getGattService(RxBletia bletia) {
+        return bletia.getService(gattService.getUuid());
+    }
+
+    public BluetoothGattCharacteristic get(RxBletia bletia) {
+        return getGattService(bletia).getCharacteristic(uuid);
     }
 }
