@@ -2,6 +2,7 @@ package jp.hxs.android.konashi.otaupdater.data.usecase;
 
 import dagger.Module;
 import dagger.Provides;
+import jp.hxs.android.konashi.otaupdater.domain.usecase.ConnectDeviceUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.GetFirmwaresUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.ScanDevicesUseCase;
 
@@ -19,6 +20,11 @@ public class UseCaseModule {
 
     @Provides
     ScanDevicesUseCase scanDevicesUseCase(ScanDevicesUseCaseImpl useCase) {
+        return useCase;
+    }
+
+    @Provides
+    ConnectDeviceUseCase connectDeviceUseCase(ConnectDeviceUseCaseImpl useCase) {
         return useCase;
     }
 }
