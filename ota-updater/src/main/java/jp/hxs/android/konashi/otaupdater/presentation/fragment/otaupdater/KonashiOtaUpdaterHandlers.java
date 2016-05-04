@@ -8,6 +8,7 @@ import jp.hxs.android.konashi.otaupdater.domain.store.KonashiOtaUpdaterStore;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.ConnectDeviceUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.GetFirmwaresUseCase;
 import jp.hxs.android.konashi.otaupdater.domain.usecase.ScanDevicesUseCase;
+import jp.hxs.android.konashi.otaupdater.domain.usecase.UploadFirmwareToKonashiUseCase;
 import jp.hxs.android.konashi.otaupdater.presentation.fragment.common.Handlers;
 import rx.schedulers.Schedulers;
 
@@ -27,18 +28,21 @@ class KonashiOtaUpdaterHandlers extends Handlers {
     private final GetFirmwaresUseCase getFirmwaresUseCase;
     private final ScanDevicesUseCase scanDevicesUseCase;
     private final ConnectDeviceUseCase connectDeviceUseCase;
+    private final UploadFirmwareToKonashiUseCase uploadFirmwareToKonashiUseCase;
 
     @Inject
     public KonashiOtaUpdaterHandlers(KonashiOtaUpdaterView view,
                                      KonashiOtaUpdaterStore store,
                                      GetFirmwaresUseCase getFirmwaresUseCase,
                                      ScanDevicesUseCase scanDevicesUseCase,
-                                     ConnectDeviceUseCase connectDeviceUseCase) {
+                                     ConnectDeviceUseCase connectDeviceUseCase,
+                                     UploadFirmwareToKonashiUseCase uploadFirmwareToKonashiUseCase) {
         this.view = view;
         this.store = store;
         this.getFirmwaresUseCase = getFirmwaresUseCase;
         this.scanDevicesUseCase = scanDevicesUseCase;
         this.connectDeviceUseCase = connectDeviceUseCase;
+        this.uploadFirmwareToKonashiUseCase = uploadFirmwareToKonashiUseCase;
     }
 
     void onSelectFirmwareClicked() {
@@ -66,5 +70,8 @@ class KonashiOtaUpdaterHandlers extends Handlers {
     }
 
     void onUpdateClicked() {
+        addSubscription(
+                uploadFirmwareToKonashiUseCase.execute().subscribeOn(Schedulers.io()).subscribe()
+        );
     }
 }
