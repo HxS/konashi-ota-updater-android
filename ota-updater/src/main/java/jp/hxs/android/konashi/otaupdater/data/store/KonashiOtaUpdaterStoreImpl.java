@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import jp.hxs.android.konashi.otaupdater.domain.entity.Device;
 import jp.hxs.android.konashi.otaupdater.domain.entity.Firmware;
 import jp.hxs.android.konashi.otaupdater.domain.store.KonashiOtaUpdaterStore;
 import rx.Observable;
@@ -23,10 +24,13 @@ class KonashiOtaUpdaterStoreImpl implements KonashiOtaUpdaterStore {
     private final Subject<List<Firmware>, List<Firmware>> firmwaresSubject;
     private Firmware firmware;
 
+    private final Subject<Device, Device> deviceSubject;
+
     @Inject
     public KonashiOtaUpdaterStoreImpl() {
         firmwaresSubject = new SerializedSubject<>(BehaviorSubject.create(new ArrayList<>()));
         firmwareSubject = new SerializedSubject<>(BehaviorSubject.create());
+        deviceSubject = new SerializedSubject<>(BehaviorSubject.create());
     }
 
     @Override
@@ -53,5 +57,15 @@ class KonashiOtaUpdaterStoreImpl implements KonashiOtaUpdaterStore {
     @Override
     public Observable<Firmware> observeFirmware() {
         return firmwareSubject;
+    }
+
+    @Override
+    public void addDevice(Device newDevice) {
+        deviceSubject.onNext(newDevice);
+    }
+
+    @Override
+    public Observable<Device> observeDevices() {
+        return deviceSubject;
     }
 }
