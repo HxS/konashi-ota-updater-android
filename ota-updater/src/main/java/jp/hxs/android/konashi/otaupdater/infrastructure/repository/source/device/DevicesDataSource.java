@@ -13,4 +13,6 @@ public interface DevicesDataSource {
     Observable<Device> scan();
     Single<ConnectedDevice> connect(Device device);
     Completable disconnect(Device device);
+
+    Observable<Integer> update(Device device, byte[] binary);
 }

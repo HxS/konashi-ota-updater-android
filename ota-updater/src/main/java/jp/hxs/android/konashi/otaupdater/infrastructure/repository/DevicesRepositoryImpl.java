@@ -1,5 +1,7 @@
 package jp.hxs.android.konashi.otaupdater.infrastructure.repository;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -38,5 +40,12 @@ class DevicesRepositoryImpl implements DevicesRepository {
     @Override
     public Completable disconnect(Device device) {
         return dataSourceFactory.createRealDataSource().disconnect(device);
+    }
+
+    @Override
+    public Observable<Integer> update(Device device, byte[] binary) {
+        return dataSourceFactory.createRealDataSource().update(device, binary)
+                .scan(0, (i, j) -> i + j)
+                .doOnNext(i -> Log.d(TAG, String.valueOf(i)));
     }
 }
