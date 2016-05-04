@@ -37,13 +37,11 @@ public class KonashiOtaUpdaterModule {
     }
 
     @Provides
-    @Singleton
     BluetoothAdapter bluetoothAdapter(BluetoothManager manager) {
         return manager.getAdapter();
     }
 
     @Provides
-    @Singleton
     RxBleScanner rxBleScanner(BluetoothAdapter adapter) {
         return new RxBleScanner(adapter);
     }

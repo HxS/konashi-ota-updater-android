@@ -1,7 +1,5 @@
 package jp.hxs.android.konashi.otaupdater.data.usecase;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import jp.hxs.android.konashi.otaupdater.domain.repository.FirmwaresRepository;
@@ -27,7 +25,6 @@ class GetFirmwaresUseCaseImpl implements GetFirmwaresUseCase {
     @Override
     public Completable execute() {
         return repo.getAll()
-                .doOnSuccess(firmwares -> Log.d(TAG, String.valueOf(firmwares.size())))
                 .doOnSuccess(store::update)
                 .toObservable().toCompletable();
     }

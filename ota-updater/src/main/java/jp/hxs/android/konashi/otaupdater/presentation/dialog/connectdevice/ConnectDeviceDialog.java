@@ -42,10 +42,7 @@ public class ConnectDeviceDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         return new AlertDialog.Builder(getActivity())
-                .setAdapter(adapter, (dialog, which) -> {
-                    final Device device = adapter.getItem(which);
-                    listener.onDeviceSelected(device);
-                })
+                .setAdapter(adapter, (_dialog, which) -> listener.onDeviceSelected(adapter.getItem(which)))
                 .create();
     }
 
